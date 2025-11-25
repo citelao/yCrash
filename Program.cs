@@ -65,5 +65,16 @@ foreach (var eventRecord in reader.Iterator().Take(50))
       5 => Green(eventRecord.LevelDisplayName),
       _ => eventRecord.LevelDisplayName
   };
+
+  var description = eventRecord.FormatDescription();
+  var descriptionFirstLine = description?.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries).FirstOrDefault() ?? "";
+  var descriptionRest = description?.Substring(descriptionFirstLine.Length).TrimStart() ?? null;
+  var hasMore = !string.IsNullOrEmpty(descriptionRest);
+
   Console.WriteLine($"{Dim($"{eventRecord.TimeCreated} {levelString}\t[{eventRecord.ProviderName}]")} {eventRecord.Id} {eventRecord.TaskDisplayName}");
+
+  var descrString = eventRecord.Level <= 3
+    ? description
+    : Dim(descriptionFirstLine + (hasMore ? " ..." : ""));
+  Console.WriteLine(descrString);
 }
