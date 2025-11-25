@@ -7,30 +7,33 @@ using Helpers;
 //   *[System[(Level=1 or Level=2 or Level=3) and TimeCreated[timediff(@SystemTime) <= 86400000]]]
 // ";
 
-// or @Name='EventLog'
-// or @Name='Microsoft-Windows-Kernel-PnP'
-// or @Name='Microsoft-Windows-DriverFrameworks-UserMode'
-// Microsoft-Windows-Ntfs
-
 // Events pulled from:
 // https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/troubleshoot-unexpected-reboots-system-event-logs
-var queryString = @"
-  *[System/Provider[@Name='Microsoft-Windows-TPM-WMI'
-    or @Name='Microsoft-Windows-Kernel-Boot'
-    or @Name='Microsoft-Windows-Kernel-General'
-    or @Name='Microsoft-Windows-Kernel-Power'
-    or @Name='Microsoft-Windows-Kernel-Processor-Power'
-    or @Name='User32'
-    or @Name='WER-SystemErrorReporting'
-    or @Name='EventLog'
-    or @Name='Microsoft-Windows-WHEA-Logger'
+var providers = new[]
+{
+  "Microsoft-Windows-TPM-WMI",
+  "Microsoft-Windows-Kernel-Boot",
+  "Microsoft-Windows-Kernel-General",
+  "Microsoft-Windows-Kernel-Power",
+  "Microsoft-Windows-Kernel-Processor-Power",
+  "User32",
+  "WER-SystemErrorReporting",
+  "EventLog",
+  "Microsoft-Windows-WHEA-Logger",
 
-    or @Name='Microsoft-Windows-Kernel-PnP'
-    or @Name='stornvme'
-    or @Name='volmgr'
+  "Microsoft-Windows-Kernel-PnP",
+  // "Microsoft-Windows-DriverFrameworks-UserMode",
+  "Microsoft-Windows-Ntfs",
+  "stornvme",
+  "volmgr",
 
-    or @Name='Microsoft-Windows-WindowsUpdateClient'
-    or @Name='Microsoft-Windows-UserPnp']]
+  "Microsoft-Windows-WindowsUpdateClient",
+  "Microsoft-Windows-UserPnp"
+};
+var providerFilters = string.Join("\n    or ",
+  providers.Select(p => $"@Name='{p}'"));
+var queryString = $@"
+  *[System/Provider[{providerFilters}]]
 ";
 
 var query = new EventLogQuery("System", PathType.LogName, queryString);
