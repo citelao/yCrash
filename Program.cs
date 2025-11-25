@@ -157,7 +157,7 @@ foreach (var eventRecord in reader.Iterator()
   var descrString = eventRecord.Level <= 3
     ? description
     : Dim(descriptionFirstLine + (hasMore ? " ..." : ""));
-  Console.WriteLine(descrString);
+  Console.WriteLine($"    {descrString}");
 
   // TODO: print out event data!
 }
