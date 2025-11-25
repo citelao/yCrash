@@ -11,7 +11,9 @@ using Helpers;
 // https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/troubleshoot-unexpected-reboots-system-event-logs
 var providers = new[]
 {
-  "Microsoft-Windows-TPM-WMI",
+  // Noisy, not-super-helpful:
+  // "Microsoft-Windows-TPM-WMI",
+
   "Microsoft-Windows-Kernel-Boot",
   "Microsoft-Windows-Kernel-General",
   "Microsoft-Windows-Kernel-Power",
@@ -24,7 +26,7 @@ var providers = new[]
   "Microsoft-Windows-Kernel-PnP",
   // "Microsoft-Windows-DriverFrameworks-UserMode",
   "Microsoft-Windows-Ntfs",
-  "stornvme",
+  // "stornvme",
   "volmgr",
 
   "Microsoft-Windows-WindowsUpdateClient",
