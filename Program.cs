@@ -112,6 +112,8 @@ using Helpers;
   </EventData>
   </Event>
 */
+
+// https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/troubleshoot-unexpected-reboots-system-event-logs
 var queryString = @"
   *[System/Provider[@Name='Microsoft-Windows-TPM-WMI'
     or @Name='Microsoft-Windows-Kernel-Boot'
