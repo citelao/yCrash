@@ -29,4 +29,9 @@ Sharing in case others find this useful.
 
 * MSDN [Troubleshoot unexpected reboots using system event logs](https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/troubleshoot-unexpected-reboots-system-event-logs)
 * MSDN [`System.Diagnostics.Eventing.Reader`](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.eventing.reader?view=windowsdesktop-10.0)
+* MSDN [How to: Query for Events](https://learn.microsoft.com/en-us/previous-versions/bb671200(v=vs.90))
+* MSDN [How to: Configure and Read Event Log Properties](https://learn.microsoft.com/en-us/previous-versions/bb671199(v=vs.90))
+* MSDN [Event Queries and Event XML](https://learn.microsoft.com/en-us/previous-versions/bb399427(v=vs.90))
+* MSDN [How to: Access and Read Event Information](https://learn.microsoft.com/en-us/previous-versions/bb671197(v=vs.90))
+
 * [LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor?tab=readme-ov-file)
